@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { render } from "react-dom";
 import "./index.scss";
 import { App } from "./App";
 import {
-  KcApp as KcAppBase,
-  defaultKcProps,
+  // KcApp as KcAppBase,
+  // defaultKcProps,
   getKcContext,
-  kcMessages,
-  useKcLanguageTag
+  // kcMessages,
+  // useKcLanguageTag
 } from "keycloakify";
-import { useCssAndCx } from "tss-react";
-import tos_en_url from "./tos_en.md";
-import tos_fr_url from "./tos_fr.md";
+// import { useCssAndCx } from "tss-react";
+// import tos_en_url from "./tos_en.md";
+// import tos_fr_url from "./tos_fr.md";
 import "./kcMessagesExtension"
 import KcApp from "./ui/components/KcApp/KcApp";
 

@@ -1,5 +1,4 @@
 import logo from "./logo.svg";
-import "./App.css";
 import myimg from "./myimg.png";
 
 export function App() {
