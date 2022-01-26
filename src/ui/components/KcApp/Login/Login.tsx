@@ -85,7 +85,7 @@ export const Login = memo(
         const submitButtonRef = useRef<HTMLButtonElement>(null);
 
         const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
-        const [areTextInputsDisabled, setAreTextInputsDisabled] = useState(
+        const [areTextInputsDisabled, ] = useState(
             () => getBrowser() === "safari",
         );
 

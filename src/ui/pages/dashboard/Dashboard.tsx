@@ -8,6 +8,7 @@ export const Dashboard = () => {
     )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export declare namespace Dashboard {
     export type I18nScheme = {
         "doRegister": undefined;
