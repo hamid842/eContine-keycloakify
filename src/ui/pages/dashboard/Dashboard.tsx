@@ -2,7 +2,7 @@ import {useTranslation} from 'i18n/useTranslations'
 import {Button} from "@mui/material";
 
 interface Props {
-    keycloak: any;
+    keycloak: Object;
 }
 
 export const Dashboard = (props: Props) => {
