@@ -1,10 +1,18 @@
 import {useTranslation} from 'i18n/useTranslations'
+import {Button} from "@mui/material";
 
-export const Dashboard = () => {
+interface Props {
+    keycloak: any;
+}
+
+export const Dashboard = (props: Props) => {
     const {t} = useTranslation({Dashboard})
-    console.log()
+
     return (
-        <div><h1>{t("doRegister")}</h1></div>
+        <div>
+            <h1>{t("doRegister")}</h1>
+            <Button variant={'outlined'} onClick={() => props.keycloak.login()}>Login</Button>
+        </div>
     )
 }
 

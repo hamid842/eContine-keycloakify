@@ -311,6 +311,7 @@ export const Login = memo(
     }
 )
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export declare namespace Login {
     export type I18nScheme = {
         "doRegister": undefined;
