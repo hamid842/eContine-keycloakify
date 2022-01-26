@@ -1,8 +1,11 @@
 import {memo, ReactNode} from "react";
 import {makeStyles} from "@mui/styles";
+import {createTheme} from "@mui/material";
 
 import studentsImage from 'assets/images/student.png'
-import bg from 'assets/images/bg.png'
+import bg from 'assets/images/bg.png';
+
+const theme = createTheme()
 
 const useStyles = makeStyles({
     background: {
@@ -13,7 +16,8 @@ const useStyles = makeStyles({
         boxSizing: 'border-box',
         overflow: 'hidden',
         opacity: 0.5,
-        position: 'relative'
+        position: 'relative',
+
     },
     layout: {
         top: 0,
@@ -31,6 +35,12 @@ const useStyles = makeStyles({
         position: 'absolute',
         left: 400,
         borderBottomLeftRadius: '100%',
+        [theme.breakpoints.down('md')]:{
+            left: 250,
+        },
+        [theme.breakpoints.down('sm')]:{
+            left: 0,
+        }
     },
     pic: {
         width: '100%',
@@ -38,6 +48,14 @@ const useStyles = makeStyles({
         opacity: 0.8,
         position: 'absolute',
         borderBottomLeftRadius: '100%',
+        [theme.breakpoints.down('md')]:{
+            width: '110%',
+            height: '100%',
+        },
+        [theme.breakpoints.down('sm')]:{
+            width: '100%',
+            height: '100%',
+        }
     },
 
 })

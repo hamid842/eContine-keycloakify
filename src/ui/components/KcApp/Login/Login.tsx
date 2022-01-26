@@ -6,8 +6,8 @@ import {Typography, Button, TextField, FormControlLabel, Checkbox, Link, createT
 import {makeStyles} from "@mui/styles";
 import {useEvt} from "evt/hooks";
 import {Evt} from "evt";
-
-import {KcContext} from "../kcContext";
+import {useTranslation} from "i18n/useTranslations";
+import type {KcContext} from "../kcContext";
 import LoginLayout from "./LoginLayout";
 import LoginFormBox from './LoginFormBox';
 import {getBrowser} from "ui/tools/getBrowser";
@@ -18,15 +18,14 @@ const theme = createTheme();
 const useStyles = makeStyles(() => ({
     rememberMeForgotPasswordWrapper: {
         display: "flex",
-        marginTop: theme.spacing(2),
     },
     forgotPassword: {
         flex: 1,
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "center",
-        color: '#1d5149'
     },
+
     buttonsWrapper: {
         marginTop: theme.spacing(4),
         display: "flex",
@@ -52,7 +51,7 @@ const useStyles = makeStyles(() => ({
         '& hover': {
             backgroundColor: '#1d5149 !important'
         }
-    }
+    },
 }))
 
 
@@ -64,15 +63,6 @@ export const Login = memo(
 
         const classes = useStyles();
 
-        const usernameInputRef = useRef<HTMLInputElement>(null);
-        const passwordInputRef = useRef<HTMLInputElement>(null);
-        const submitButtonRef = useRef<HTMLButtonElement>(null);
-
-        const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
-        const [areTextInputsDisabled, setAreTextInputsDisabled] = useState(
-            () => getBrowser() === "safari",
-        );
-
         const {
             social,
             realm,
@@ -82,6 +72,17 @@ export const Login = memo(
             auth,
             registrationDisabled,
         } = kcContext;
+
+        const usernameInputRef = useRef<HTMLInputElement>(null);
+        const passwordInputRef = useRef<HTMLInputElement>(null);
+        const submitButtonRef = useRef<HTMLButtonElement>(null);
+
+        const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
+        const [areTextInputsDisabled, setAreTextInputsDisabled] = useState(
+            () => getBrowser() === "safari",
+        );
+
+
 
         {
             const [passwordInput, setPasswordInput] = useState<HTMLInputElement | null>(
@@ -135,11 +136,15 @@ export const Login = memo(
             return true;
         });
 
+
+
+        const {t} = useTranslation({ Login })
+
         return (
-            <LoginLayout>
+            <LoginLayout {...props}>
                 <LoginFormBox>
                     <img src={logo} alt={'Logo'} height={60} width={200}/>
-                    <Typography variant={'h5'} sx={{my: 2}}>Login</Typography>
+                    <Typography variant={'h5'} sx={{my: 2}}>{t('title')}</Typography>
                     <div>
                         {realm.password && social.providers !== undefined && (
                             <>
@@ -214,7 +219,7 @@ export const Login = memo(
                                 >
                                     <div>
                                         {realm.rememberMe && !usernameEditDisabled && (
-                                            <div className="checkbox">
+                                            <div>
                                                 <FormControlLabel
                                                     control={
                                                         <Checkbox
@@ -227,7 +232,7 @@ export const Login = memo(
                                                         />
                                                     }
                                                     label={
-                                                        <Typography variant="body2">
+                                                        <Typography variant="body2" sx={{marginTop: 0.5}}>
                                                             {msg("rememberMe")!}
                                                         </Typography>
                                                     }
@@ -284,8 +289,8 @@ export const Login = memo(
                                         className={classes.registerLink}
                                         underline="hover"
                                     >
-                                        Register
-                                        {/*{t("doRegister")}*/}
+                                        {/*Register*/}
+                                        {t("doRegister")}
                                     </Link>
                                 </div>
                             )
@@ -297,3 +302,11 @@ export const Login = memo(
 
     }
 )
+
+export declare namespace Login {
+    export type I18nScheme = {
+        "doRegister": undefined;
+        "title":undefined
+    };
+}
+

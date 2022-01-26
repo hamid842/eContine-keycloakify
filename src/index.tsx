@@ -1,34 +1,37 @@
 // import { useEffect } from "react";
-import { render } from "react-dom";
+import {render} from "react-dom";
 import "./index.scss";
-import { App } from "./App";
+import {App} from "./App";
 import {
-  // KcApp as KcAppBase,
-  // defaultKcProps,
-  getKcContext,
-  // kcMessages,
-  // useKcLanguageTag
+    // KcApp as KcAppBase,
+    // defaultKcProps,
+    getKcContext,
+    // kcMessages,
+    // useKcLanguageTag
 } from "keycloakify";
 // import { useCssAndCx } from "tss-react";
-// import tos_en_url from "./tos_en.md";
-// import tos_fr_url from "./tos_fr.md";
+
 import "./kcMessagesExtension"
 import KcApp from "./ui/components/KcApp/KcApp";
+import {I18nProvider} from "./i18n/I18nProvider";
 
-const { kcContext } = getKcContext({
-  /* Uncomment to test th<e login page for development */
-  "mockPageId": "login.ftl"
+
+const {kcContext} = getKcContext({
+    /* Uncomment to test th<e login page for development */
+    // "mockPageId": "login.ftl"
 });
 
 if (kcContext !== undefined) {
-  console.log(kcContext);
+    console.log(kcContext);
 }
 
+
 render(
-  kcContext === undefined ?
-    <App /> :
-    <KcApp  kcContext={kcContext}/>,
-  document.getElementById("root")
+    kcContext === undefined ?
+        <App/> :
+        <I18nProvider><KcApp kcContext={kcContext}/></I18nProvider>
+    ,
+    document.getElementById("root")
 );
 
 // function KcApp() {
