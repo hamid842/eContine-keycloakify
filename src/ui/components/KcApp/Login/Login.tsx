@@ -12,6 +12,7 @@ import LoginLayout from "./LoginLayout";
 import LoginFormBox from './LoginFormBox';
 import {getBrowser} from "ui/tools/getBrowser";
 import logo from 'assets/images/E.png'
+import LocaleButton from "../../shared/LocaleButton";
 
 const theme = createTheme();
 
@@ -52,6 +53,12 @@ const useStyles = makeStyles(() => ({
             backgroundColor: '#1d5149 !important'
         }
     },
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    }
 }))
 
 
@@ -81,7 +88,6 @@ export const Login = memo(
         const [areTextInputsDisabled, setAreTextInputsDisabled] = useState(
             () => getBrowser() === "safari",
         );
-
 
 
         {
@@ -137,13 +143,15 @@ export const Login = memo(
         });
 
 
-
-        const {t} = useTranslation({ Login })
+        const {t} = useTranslation({Login})
 
         return (
             <LoginLayout {...props}>
                 <LoginFormBox>
-                    <img src={logo} alt={'Logo'} height={60} width={200}/>
+                    <div className={classes.header}>
+                        <img src={logo} alt={'Logo'} height={60} width={200}/>
+                        <LocaleButton/>
+                    </div>
                     <Typography variant={'h5'} sx={{my: 2}}>{t('title')}</Typography>
                     <div>
                         {realm.password && social.providers !== undefined && (
@@ -306,7 +314,7 @@ export const Login = memo(
 export declare namespace Login {
     export type I18nScheme = {
         "doRegister": undefined;
-        "title":undefined
+        "title": undefined
     };
 }
 
