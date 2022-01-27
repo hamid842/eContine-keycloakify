@@ -2,6 +2,7 @@ import AppRoutes from 'ui/routes/AppRoutes'
 import {I18nProvider} from 'i18n/I18nProvider'
 import {ReactKeycloakProvider} from '@react-keycloak/web'
 
+
 import keycloak from './keycloak'
 import LocaleButton from "./ui/components/shared/LocaleButton";
 
