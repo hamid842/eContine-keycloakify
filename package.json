@@ -1,5 +1,6 @@
 {
     "name": "keycloakify-demo-app",
+    "homepage": "https://e-conteen-demo.netlify.app",
     "version": "0.2.23",
     "description": "A demo project for keycloakify",
     "repository": {
