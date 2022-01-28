@@ -2,6 +2,7 @@ import {useKeycloak} from "@react-keycloak/web";
 import {Button} from "@mui/material";
 
 import {useTranslation} from 'i18n/useTranslations'
+import { useThunks } from "ui/coreApi";
 // interface Props {
 //     keycloak: {
 //         login: any
@@ -10,12 +11,15 @@ import {useTranslation} from 'i18n/useTranslations'
 
 export const Dashboard = () => {
     const {t} = useTranslation({Dashboard})
+    // @ts-ignore
+    const { userAuthenticationThunks } = useThunks();
+    // const isUserLoggedIn = userAuthenticationThunks.getIsUserLoggedIn();
     const {keycloak} = useKeycloak()
 
     return (
         <div>
             <h1>{t("doRegister")}</h1>
-            <Button variant={'outlined'} onClick={() => keycloak.login()}>Login</Button>
+            <Button variant={'outlined'} onClick={userAuthenticationThunks.login}>Login</Button>
         </div>
     )
 }

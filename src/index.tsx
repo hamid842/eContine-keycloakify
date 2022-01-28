@@ -13,12 +13,12 @@ import {
 
 import "./kcMessagesExtension"
 import KcApp from "./ui/components/KcApp/KcApp";
-import {I18nProvider} from "./i18n/I18nProvider";
+import {I18nProvider} from "i18n/I18nProvider";
 
 
 const {kcContext} = getKcContext({
     /* Uncomment to test th<e login page for development */
-    "mockPageId": "login.ftl"
+    // "mockPageId": "login.ftl"
 });
 
 if (kcContext !== undefined) {
