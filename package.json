@@ -9,7 +9,7 @@
     },
     "scripts": {
         "build": "react-scripts build",
-        "keycloak": "yarn add mvn && yarn build && build-keycloak-theme",
+        "keycloak": "yarn add nvm && yarn build && build-keycloak-theme",
         "start": "react-scripts start",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
