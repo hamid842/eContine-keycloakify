@@ -1,25 +1,26 @@
-import {useKeycloak} from "@react-keycloak/web";
 import {Button} from "@mui/material";
 
 import {useTranslation} from 'i18n/useTranslations'
-import { useThunks } from "ui/coreApi";
-// interface Props {
-//     keycloak: {
-//         login: any
-//     };
-// }
+import {useThunks} from "ui/coreApi";
+
 
 export const Dashboard = () => {
     const {t} = useTranslation({Dashboard})
-    // @ts-ignore
-    const { userAuthenticationThunks } = useThunks();
-    // const isUserLoggedIn = userAuthenticationThunks.getIsUserLoggedIn();
-    const {keycloak} = useKeycloak()
-
+    const {userAuthenticationThunks} = useThunks();
+    const isUserLoggedIn = userAuthenticationThunks.getIsUserLoggedIn();
+console.log(isUserLoggedIn)
     return (
         <div>
             <h1>{t("doRegister")}</h1>
-            <Button variant={'outlined'} onClick={userAuthenticationThunks.login}>Login</Button>
+            {!isUserLoggedIn ? (
+                <Button component={'button'} variant={'outlined'}
+                    // @ts-ignore
+                        onClick={userAuthenticationThunks.login}>
+                    {t("login")}
+                </Button>
+            ) : (
+                <a href="https://localhost:3000">{t("new user")}</a>
+            )}
         </div>
     )
 }
@@ -28,5 +29,7 @@ export const Dashboard = () => {
 export declare namespace Dashboard {
     export type I18nScheme = {
         "doRegister": undefined;
+        "new user": undefined;
+        "login": undefined;
     };
 }

@@ -6,28 +6,38 @@ import memoize from "memoizee";
 import {id} from "tsafe/id";
 import type {
     OidcClientConfig,
+    UserApiClientConfig
 } from "core/setup";
 import {assert} from "tsafe/assert";
+import {getEnv} from "env";
 
 //NOTE: Create store can only be called once
 const createStore_memo = memoize(
     () => {
-
-        if (process.env.OIDC_URL !== "") {
-            assert(process.env.OIDC_REALM !== "", "You must provide an OIDC realm");
+        const env = getEnv();
+        if (env.OIDC_URL !== "") {
+            assert(env.OIDC_REALM !== "", "You must provide an OIDC realm");
         }
 
         return createStore({
             "oidcClientConfig": id<OidcClientConfig.Keycloak>({
                 "implementation": "KEYCLOAK",
-                // @ts-ignore
-                "url": process.env.OIDC_URL,
-                // @ts-ignore
-                "realm": process.env.OIDC_REALM,
-                // @ts-ignore
-                "clientId": process.env.OIDC_CLIENT_ID,
+                "url": env.OIDC_URL,
+                "realm": env.OIDC_REALM,
+                "clientId": env.OIDC_CLIENT_ID,
             }),
-
+            "userApiClientConfig":
+               id<UserApiClientConfig.Jwt>({
+                        "implementation": "JWT",
+                        "oidcClaims": {
+                            "email": env.OIDC_EMAIL_CLAIM,
+                            "familyName": env.OIDC_FAMILY_NAME_CLAIM,
+                            "firstName": env.OIDC_FIRST_NAME_CLAIM,
+                            "username": env.OIDC_USERNAME_CLAIM,
+                            "groups": env.OIDC_GROUPS_CLAIM,
+                            "local": env.OIDC_LOCALE_CLAIM,
+                        },
+                    }),
         });
     },
     {"promise": true},

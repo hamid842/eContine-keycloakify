@@ -8,7 +8,7 @@ export type State = {
     redirectUri: string | null;
     waiting: boolean;
     displayLogin: boolean;
-    visite: boolean;
+    visit: boolean;
     faviconUrl: string;
 };
 
@@ -34,7 +34,7 @@ const slice = createSlice({
         "redirectUri": null,
         "waiting": false,
         "displayLogin": false,
-        "visite": false,
+        "visit": false,
         "faviconUrl": "/onyxia.png",
     }),
     "reducers": {
@@ -86,7 +86,7 @@ const slice = createSlice({
             state.faviconUrl = url;
         },
         "startVisite": state => {
-            state.visite = true;
+            state.visit = true;
         },
     },
 });

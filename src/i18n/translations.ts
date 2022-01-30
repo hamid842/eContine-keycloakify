@@ -121,7 +121,9 @@ const common = id<Record<SupportedLanguage,
 export const resources = id<Record<SupportedLanguage, Translations>>({
     "en": {
         "Dashboard": {
-            "doRegister": "English"
+            "doRegister": "English",
+            "new user": "New to the datalab?En",
+            "login": "Login/En"
         },
         "App": {
             "file": "File",
@@ -130,10 +132,13 @@ export const resources = id<Record<SupportedLanguage, Translations>>({
             "title": "Login English",
             "doRegister": "Create an account",
         },
+
     },
     "fr": {
         "Dashboard": {
-            "doRegister": "French"
+            "doRegister": "French",
+            "new user": "New to the datalab?Fr",
+            "login": "Login/Fr"
         },
         "App": {
             "file": "Réduire",
@@ -142,11 +147,14 @@ export const resources = id<Record<SupportedLanguage, Translations>>({
             ...common.fr,
             "title": "Login French",
             "doRegister": "Créer un compte",
+
         },
     },
     "de": {
         "Dashboard": {
-            "doRegister": "Dutch"
+            "doRegister": "Dutch",
+            "new user": "New to the datalab?De",
+            "login": "Login/De"
         },
         "App": {
             "file": "Réduire",
@@ -155,6 +163,8 @@ export const resources = id<Record<SupportedLanguage, Translations>>({
             ...common.de,
             "title": "Login Dutch",
             "doRegister": "Crier un compute",
+
         },
+
     }
 });

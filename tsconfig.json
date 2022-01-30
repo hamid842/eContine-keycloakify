@@ -22,7 +22,13 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true
+    "strictFunctionTypes": false,
+    "downlevelIteration": true,
+    "paths": {
+      "crypto": [
+        "../../node_modules/crypto-browserify"
+      ]
+    }
   },
   "include": [
     "src"
