@@ -1,11 +1,11 @@
 {
   "name": "keycloakify-demo-app",
-  "homepage": "https://hamid842.github.io/eCanteen-keycloakify",
+  "homepage": "https://hamid842.github.io/eContine-keycloakify",
   "version": "1.0.0",
   "description": "A demo project for keycloakify",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hamid842/eConteen-keycloakify.git"
+    "url": "git://github.com/hamid842/eContine-keycloakify.git"
   },
   "scripts": {
     "build": "react-scripts build",
