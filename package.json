@@ -5,7 +5,7 @@
   "description": "A demo project for keycloakify",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hamid842/e-conteen-demo.git"
+    "url": "git://github.com/hamid842/e-conteen-keyclokify.git"
   },
   "scripts": {
     "build": "react-scripts build",
