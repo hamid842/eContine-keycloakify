@@ -65,7 +65,7 @@ interface Props {
     children: ReactNode
 }
 
-const LoginLayout = memo((props: Props) => {
+const Layout = memo((props: Props) => {
         const {children} = props;
         const classes = useStyles();
         return (
@@ -82,4 +82,4 @@ const LoginLayout = memo((props: Props) => {
     }
 )
 
-export default LoginLayout;
+export default Layout;

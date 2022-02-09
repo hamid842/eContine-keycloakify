@@ -8,8 +8,8 @@ import {useEvt} from "evt/hooks";
 import {Evt} from "evt";
 import {useTranslation} from "i18n/useTranslations";
 import type {KcContext} from "../kcContext";
-import LoginLayout from "./LoginLayout";
-import LoginFormBox from './LoginFormBox';
+import Layout from "../Layout";
+import FormBox from '../FormBox';
 import {getBrowser} from "ui/tools/getBrowser";
 import logo from 'assets/images/E.png'
 import LocaleButton from "../../shared/LocaleButton";
@@ -146,8 +146,8 @@ export const Login = memo(
         const {t} = useTranslation({Login})
 
         return (
-            <LoginLayout {...props}>
-                <LoginFormBox>
+            <Layout {...props}>
+                <FormBox>
                     <div className={classes.header}>
                         <img src={logo} alt={'Logo'} height={60} width={200}/>
                         <LocaleButton/>
@@ -304,8 +304,8 @@ export const Login = memo(
                             )
                         }
                     </div>
-                </LoginFormBox>
-            </LoginLayout>
+                </FormBox>
+            </Layout>
         )
 
     }

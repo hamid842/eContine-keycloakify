@@ -70,7 +70,7 @@ export type KcContext = NonNullable<typeof kcContext>;
         },
     };
 
-    id<KcLanguageTag[]>(["fr", "en"]).forEach(kcLanguageTag =>
+    id<KcLanguageTag[]>(["fr", "en","de"]).forEach(kcLanguageTag =>
         Object.assign(
             kcMessages[kcLanguageTag],
             Object.fromEntries(

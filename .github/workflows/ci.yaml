@@ -39,7 +39,7 @@ jobs:
       to_version: ${{ steps.step1.outputs.to_version }}
       is_upgraded_version: ${{ steps.step1.outputs.is_upgraded_version }}
     steps:
-      - uses: garronej/github_actions_toolkit@v2.2
+      - uses: hamid842/github_actions_toolkit@v2.2
         id: step1
         with:
           action_name: is_package_json_version_upgraded
@@ -125,7 +125,7 @@ jobs:
     needs:
       - docker
     steps:
-      - uses: garronej/github_actions_toolkit@v2.4
+      - uses: hamid842/github_actions_toolkit@v2.4
         with:
           action_name: update_changelog
           branch: ${{ github.ref }}
@@ -154,7 +154,7 @@ jobs:
         env:
           FROM_VERSION: ${{ needs.check_if_version_upgraded.outputs.from_version }}
           TO_VERSION: ${{ needs.check_if_version_upgraded.outputs.to_version }}
-      - uses: garronej/action-gh-release@v0.2.0
+      - uses: hamid842/action-gh-release@v0.2.0
         with:
           name: Release v${{ needs.check_if_version_upgraded.outputs.to_version }}
           tag_name: v${{ needs.check_if_version_upgraded.outputs.to_version }}

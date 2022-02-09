@@ -13,7 +13,7 @@ import {App} from "../App";
 // import { FourOhFour } from "ui/components/pages/FourOhFour";
 // import { PortraitModeUnsupported } from "ui/components/pages/PortraitModeUnsupported";
 // import { Home } from "ui/components/pages/Home";
-// import { RegisterUserProfile } from "ui/components/KcApp/RegisterUserProfile";
+import { RegisterUserProfile } from "ui/components/KcApp/Register/RegisterUser";
 // import { AccountField } from "ui/components/pages/Account/AccountField";
 // import { Account } from "ui/components/pages/Account/Account";
 // import { AccountInfoTab } from "ui/components/pages/Account/tabs/AccountInfoTab";
@@ -65,7 +65,7 @@ const reflectedI18nSchemes = {
     // [symToStr({ PortraitModeUnsupported })]: Reflect<PortraitModeUnsupported.I18nScheme>(),
     // [symToStr({ FourOhFour })]: Reflect<FourOhFour.I18nScheme>(),
     // [symToStr({ Home })]: Reflect<Home.I18nScheme>(),
-    // [symToStr({ RegisterUserProfile })]: Reflect<RegisterUserProfile.I18nScheme>(),
+    [symToStr({ RegisterUserProfile })]: Reflect<RegisterUserProfile.I18nScheme>(),
     // [symToStr({ AccountField })]: Reflect<AccountField.I18nScheme>(),
     // [symToStr({ Account })]: Reflect<Account.I18nScheme>(),
     // [symToStr({ AccountInfoTab })]: Reflect<AccountInfoTab.I18nScheme>(),
@@ -132,7 +132,17 @@ export const resources = id<Record<SupportedLanguage, Translations>>({
             "title": "Login English",
             "doRegister": "Create an account",
         },
-
+        "RegisterUserProfile": {
+            "title":"Register En",
+            "allowed email domains": "Allowed domains",
+            "minimum length": "Minimum length: {{n}}",
+            "must be different from username": "Pass can't be the username",
+            "password mismatch": "Passwords mismatch",
+            "go back": "Go back",
+            "form not filled properly yet":
+                "Please make sure the form is properly filled out",
+            "must respect the pattern": "Must respect the pattern",
+        },
     },
     "fr": {
         "Dashboard": {
@@ -147,7 +157,17 @@ export const resources = id<Record<SupportedLanguage, Translations>>({
             ...common.fr,
             "title": "Login French",
             "doRegister": "Créer un compte",
-
+        },
+        "RegisterUserProfile": {
+            "title":"Register Fr",
+            "allowed email domains": "Domaines autorisés",
+            "minimum length": "Longueur minimum {{n}}",
+            "must be different from username": "Ne peut pas être le nom d'utilisateur",
+            "password mismatch": "Les deux mots de passe ne correspondent pas",
+            "go back": "Retour",
+            "form not filled properly yet":
+                "Veuillez vérifier que vous avez bien rempli le formulaire",
+            "must respect the pattern": "Dois respecter le format",
         },
     },
     "de": {
@@ -165,6 +185,16 @@ export const resources = id<Record<SupportedLanguage, Translations>>({
             "doRegister": "Crier un compute",
 
         },
-
+        "RegisterUserProfile": {
+            "title":"Register De",
+            "allowed email domains": "Domaines autorisés",
+            "minimum length": "Longueur minimum {{n}}",
+            "must be different from username": "Ne peut pas être le nom d'utilisateur",
+            "password mismatch": "Les deux mots de passe ne correspondent pas",
+            "go back": "Retour",
+            "form not filled properly yet":
+                "Veuillez vérifier que vous avez bien rempli le formulaire",
+            "must respect the pattern": "Dois respecter le format",
+        },
     }
 });

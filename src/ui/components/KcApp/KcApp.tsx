@@ -14,8 +14,8 @@ import { Login } from "./Login/Login";
 // import { LoginIdpLinkConfirm } from "keycloakify/lib/components/LoginIdpLinkConfirm";
 // import { LoginUpdatePassword } from "keycloakify/lib/components/LoginUpdatePassword";
 // import { LoginUpdateProfile } from "./LoginUpdateProfile";
-// import { RegisterUserProfile } from "./RegisterUserProfile";
-// import { Register } from "keycloakify/lib/components/Register";
+import { RegisterUserProfile } from "./Register/RegisterUser";
+import { Register } from "keycloakify/lib/components/Register";
 // import { getBrowser } from "ui/tools/getBrowser";
 import type { KcContext } from "./kcContext";
 
@@ -52,8 +52,8 @@ const KcApp = memo((props: Props) => {
     switch (kcContext.pageId) {
         case "login.ftl":
             return <Login {...{ kcContext, ...kcProps }} />;
-        // case "register.ftl":
-        //     return <Register {...{ kcContext, ...kcProps }} />;
+        case "register.ftl":
+            return <Register {...{ kcContext, ...kcProps }} />;
         // case "terms.ftl":
         //     return <Terms {...{ kcContext, ...kcProps }} />;
         // case "info.ftl":
@@ -70,8 +70,8 @@ const KcApp = memo((props: Props) => {
         //     return <LoginUpdateProfile {...{ kcContext, ...kcProps }} />;
         // case "login-idp-link-confirm.ftl":
         //     return <LoginIdpLinkConfirm {...{ kcContext, ...kcProps }} />;
-        // case "register-user-profile.ftl":
-        //     return <RegisterUserProfile {...{ kcContext, ...kcProps }} />;
+        case "register-user-profile.ftl":
+            return <RegisterUserProfile {...{ kcContext, ...kcProps }} />;
         // case "login-update-password.ftl":
         //     return <LoginUpdatePassword {...{ kcContext, ...kcProps }} />;
     }
