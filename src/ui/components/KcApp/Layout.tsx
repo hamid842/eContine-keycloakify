@@ -35,10 +35,10 @@ const useStyles = makeStyles({
         position: 'absolute',
         left: 400,
         borderBottomLeftRadius: '100%',
-        [theme.breakpoints.down('md')]:{
+        [theme.breakpoints.down('md')]: {
             left: 250,
         },
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('sm')]: {
             left: 0,
         }
     },
@@ -48,16 +48,22 @@ const useStyles = makeStyles({
         opacity: 0.8,
         position: 'absolute',
         borderBottomLeftRadius: '100%',
-        [theme.breakpoints.down('md')]:{
+        [theme.breakpoints.down('md')]: {
             width: '110%',
             height: '100%',
         },
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('sm')]: {
             width: '100%',
             height: '100%',
         }
     },
-
+    main: {
+        height:'100%',
+        display: 'flex',
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 })
 
 
@@ -75,7 +81,7 @@ const Layout = memo((props: Props) => {
                     <div className={classes.picContainer}>
                         <img src={studentsImage} className={classes.pic} alt={'Student Pic'}/>
                     </div>
-                    <div>{children}</div>
+                    <div className={classes.main}>{children}</div>
                 </div>
             </>
         )

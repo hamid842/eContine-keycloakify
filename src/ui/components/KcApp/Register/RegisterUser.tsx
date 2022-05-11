@@ -1,7 +1,7 @@
 import {useMemo, memo, useEffect, Fragment} from "react";
 import type {KcProps} from "keycloakify";
 import type {KcContextBase} from "keycloakify";
-import {useKcMessage} from "keycloakify";
+import {getMsg, getCurrentKcLanguageTag} from "keycloakify";
 import {makeStyles} from "@mui/styles";
 import {Button, TextField, Tooltip, Typography} from "@mui/material";
 import {useConstCallback} from "powerhooks/useConstCallback";
@@ -23,6 +23,11 @@ const useStyles = makeStyles(({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
+    },
+    btnContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 }))
 
@@ -31,10 +36,11 @@ export const RegisterUserProfile = memo(
     ({kcContext, ...props}: { kcContext: KcContextBase.RegisterUserProfile } & KcProps) => {
         const {url, messagesPerField, recaptchaRequired, recaptchaSiteKey} = kcContext;
 
-        const {msg, msgStr, advancedMsg} = useKcMessage();
+        const currentKcLanguageTag: any = getCurrentKcLanguageTag(kcContext)
+        const {msg, msgStr,advancedMsg} = getMsg(currentKcLanguageTag);
         const classes = useStyles();
 
-        console.log(props, messagesPerField, msg, classes)
+        console.log(url, messagesPerField, msg, classes)
 
         // const props = useMemo(
         //     () => ({
@@ -62,7 +68,7 @@ export const RegisterUserProfile = memo(
                     "shouldBe": "different" as const,
                 },
                 "length": {
-                    "min": "12" as const,
+                    "min": "3" as const,
                     "ignore.empty.value": true,
                 },
             }),
@@ -216,6 +222,7 @@ export const RegisterUserProfile = memo(
                                         <TextField
                                             fullWidth
                                             size={'small'}
+                                            sx={{my: 1}}
                                             type={(() => {
                                                 switch (attribute.name) {
                                                     case "password-confirm":
@@ -358,7 +365,7 @@ export const RegisterUserProfile = memo(
                                 </div>
                             </div>
                         )}
-                        <div>
+                        <div className={classes.btnContainer}>
                             <Button
 
                                 onClick={redirectToLogin}
@@ -370,7 +377,7 @@ export const RegisterUserProfile = memo(
                                 const button = (
                                     <Button
 
-                                        disabled={!isFormSubmittable}
+                                        // disabled={!isFormSubmittable}
                                         type="submit"
                                         tabIndex={getIncrementedTabIndex()}
                                     >

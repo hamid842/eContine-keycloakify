@@ -1,7 +1,7 @@
 import {memo, useState, useRef, useEffect} from "react";
 import type {KcProps} from "keycloakify/lib/components/KcProps";
-import {useKcMessage} from "keycloakify/lib/i18n/useKcMessage";
 import {useConstCallback} from "powerhooks/useConstCallback";
+import {getMsg, getCurrentKcLanguageTag} from "keycloakify";
 import {Typography, Button, TextField, FormControlLabel, Checkbox, Link, createTheme} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import {useEvt} from "evt/hooks";
@@ -66,7 +66,8 @@ type KcContext_Login = Extract<KcContext, { pageId: "login.ftl" }>;
 
 export const Login = memo(
     ({kcContext, ...props}: { kcContext: KcContext_Login } & KcProps) => {
-        const {msg, msgStr} = useKcMessage();
+        const currentKcLanguageTag: any = getCurrentKcLanguageTag(kcContext)
+        const {msg, msgStr} = getMsg(currentKcLanguageTag);
 
         const classes = useStyles();
 
@@ -85,7 +86,7 @@ export const Login = memo(
         const submitButtonRef = useRef<HTMLButtonElement>(null);
 
         const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
-        const [areTextInputsDisabled, ] = useState(
+        const [areTextInputsDisabled,] = useState(
             () => getBrowser() === "safari",
         );
 

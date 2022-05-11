@@ -1,6 +1,6 @@
 import type { SupportedLanguage, fallbackLanguage } from "./translations";
 import { createUseGlobalState } from "powerhooks/useGlobalState";
-import { getEvtKcLanguage } from "keycloakify";
+import { changeLocale } from "keycloakify";
 import { assert } from "tsafe/assert";
 import { id } from "tsafe/id";
 import type { Equals } from "tsafe";
@@ -23,5 +23,5 @@ export const { useLng, evtLng } = createUseGlobalState("lng", (): SupportedLangu
     return id<typeof fallbackLanguage>("en");
 });
 
-//NOTE: When we change langue in the main APP we change as well for the login pages
-evtLng.toStateless().attach(lng => (getEvtKcLanguage().state = lng));
+//NOTE: When we change language in the main APP we change as well for the login pages
+evtLng.toStateless().attach((lng:any) => (changeLocale(lng)));
